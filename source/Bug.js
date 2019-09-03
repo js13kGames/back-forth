@@ -110,8 +110,7 @@ export function  Bug (game, animations){
                 this.anchor.y = this.groundedAnchorY;
                 this.jumpSpeed = 0;
                 this.isFlying = 0;
-                if(!game.gameOver) //may be killed on the fly
-                        this.currentState = "idle";
+                this.currentState = "idle";
               }
 
 
