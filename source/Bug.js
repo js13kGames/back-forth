@@ -63,8 +63,11 @@ export function  Bug (game, animations){
               p1%=360;
               p2%=360;
 
-              if(Math.abs(p1-game.arrow1.idleDeg) > Math.abs(p2-game.arrow1.idleDeg)) this.idleDeg = p1;
-              else this.idleDeg = p2;
+              if(Math.min(Math.abs(p1-game.arrow1.idleDeg),Math.abs(p1-game.arrow2.idleDeg)) > 
+                 Math.min(Math.abs(p2-game.arrow1.idleDeg),Math.abs(p2-game.arrow2.idleDeg)))
+                   this.idleDeg = p1;
+              else 
+                   this.idleDeg = p2;
              
 
            },
