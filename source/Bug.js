@@ -110,6 +110,7 @@ export function  Bug (game, animations){
               if(this.jumpSpeed) this.jumpSpeed+=this.gravity;
               this.anchor.y+=this.jumpSpeed;
               if(this.anchor.y<this.groundedAnchorY){
+                emit('bug_hitground',this.rotationDeg,this.jumpSpeed);
                 this.anchor.y = this.groundedAnchorY;
                 this.jumpSpeed = 0;
                 this.isFlying = 0;

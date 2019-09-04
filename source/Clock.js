@@ -1,11 +1,26 @@
-import  { Sprite, emit }  from "./kontra.js"
+import  { Sprite, emit, on }  from "./kontra.js"
 import  { rotatePoint }  from "./Util.js"
 const roman = [null,"Ⅰ","Ⅱ","Ⅲ","Ⅳ","Ⅴ","Ⅵ","Ⅶ","Ⅷ","Ⅸ","Ⅹ","Ⅺ","Ⅻ"];
 export function Clock (game,x,y,radius = 100){
+    let clock;
 
-    const clock  =  Sprite({
+    on('bug_hitground',(bugRotationDeg,bugSpeed)=>{
+
+         const deg = 2*Math.PI * (bugRotationDeg+90) / 360;
+
+         clock.offsetSpeed = {x: 2*Math.abs(bugSpeed) * Math.cos(deg),y: 2*Math.abs(bugSpeed) * Math.sin(deg)};
+         clock.offsetAcceleration = {x: -0.05 * Math.cos(deg),y: -0.05 * Math.sin(deg)};
+              
+
+    })
+   
+    clock  =  Sprite({
            x: 0,
            y: 0,
+           offset: {x:0,y:0},
+           offsetSpeed: null,         
+           offsetAcceleration:null,
+
            radius: null,
            numbersRadius: null,
            minRadius:null,
@@ -74,11 +89,32 @@ export function Clock (game,x,y,radius = 100){
                 }
              }
 
+             if(this.offsetSpeed)
+             {
+
+                const before = {x:Math.sign(this.offset.x),y:Math.sign(this.offset.y)};
+
+                this.offset.x += this.offsetSpeed.x;
+                this.offset.y += this.offsetSpeed.y;
+                
+                this.offsetSpeed.x += this.offsetAcceleration.x;
+                this.offsetSpeed.y += this.offsetAcceleration.y;
+                
+                const after = {x:Math.sign(this.offset.x),y:Math.sign(this.offset.y)};
+
+                if( -1*before.x == after.x || -1*before.y == after.y){
+                   this.offsetSpeed = this.offsetAcceleration = null;
+                   this.offset = {x:0,y:0};
+                }
+            
+             
+             }
+
            },
            draw: function(){
              this.context.fillStyle = game.colorScheme.clock;
              this.context.beginPath();
-             this.context.arc(this.x, this.y, this.radius, 0, 2  * Math.PI);
+             this.context.arc(this.x+this.offset.x, this.y+this.offset.y, this.radius, 0, 2  * Math.PI);
              this.context.fill();
 
 
