@@ -3,7 +3,6 @@ import  { GameLoop, SpriteSheet, imageAssets, load, on, init as initKontra }  fr
 import  { Clock }  from "./Clock.js"
 import  { Bug }  from "./Bug.js"
 import  { Sound }  from "./Sound.js"
-import  { TouchControls }  from "./TouchControls.js"
 import  { ScoreBar }  from "./ScoreBar.js"
 import  { rotatePoint, isMobile }  from "./Util.js"
 import  { SATCollision }  from "./Collision.js"
@@ -172,7 +171,6 @@ export class Game extends EventTarget{
       this.clock.render();      
       this.bug.render();
       this.scoreBar.render();
-      if(this.touchControls) this.touchControls.render();
     }
 }
 

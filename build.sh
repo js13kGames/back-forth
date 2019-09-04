@@ -10,7 +10,6 @@
 ./source/Clock.js \
 ./source/ColorSchemes.js  \
 ./source/Sound.js \
-./source/TouchControls.js \
 ./source/kontra.js \
 ./source/jsfxr.js \
 --language_in ECMASCRIPT_2016 --language_out ECMASCRIPT_2016 --compilation_level SIMPLE --js_output_file bundle.js
