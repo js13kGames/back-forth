@@ -6,8 +6,9 @@ let rotatePoint = (point,rad)=>{
    }
 let isMobile = ()=> /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);  
 
+const localStoragePrefix = 'back-and-forth-js13k-2019-';
 
-export { rotatePoint,isMobile };
+export { rotatePoint,isMobile, localStoragePrefix };
 
 
 

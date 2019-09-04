@@ -1,5 +1,5 @@
 import  {Sprite, on, emit, setStoreItem, getStoreItem }  from "./kontra.js"
-import  { isMobile }  from "./Util.js"
+import  { isMobile, localStoragePrefix as prefix }  from "./Util.js"
 const mobile = isMobile();
 
 export function ScoreBar  (game){
@@ -28,7 +28,7 @@ export function ScoreBar  (game){
               this.score+=earned;
               if(this.score>this.hiScore){
                   this.hiScore = this.score;
-                  setStoreItem("hiScore",this.hiScore);
+                  setStoreItem(prefix+"hiScore",this.hiScore);
               }             
               emit("scorebar_add", this.score); 
 
@@ -62,7 +62,7 @@ export function ScoreBar  (game){
 
       defSize(game.clock.radius);
       defPosition(game.clock.x,game.clock.y);
-      scoreBar.hiScore = getStoreItem("hiScore") || 0;
+      scoreBar.hiScore = getStoreItem(prefix+"hiScore") || 0;
 
 
       return scoreBar;

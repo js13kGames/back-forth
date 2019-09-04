@@ -1,10 +1,11 @@
 
 import  { GameLoop, setStoreItem, getStoreItem } from "./kontra.js"
 import   Game   from "./Game.js"
-import  { isMobile } from "./Util.js"
+import  { isMobile, localStoragePrefix as prefix } from "./Util.js"
+
 
 const mobile = isMobile();
-console.log(getStoreItem("visited"));
+console.log(getStoreItem(prefix+"visited"));
 
 
 const greeting_close = document.getElementById("greeting_close"),
@@ -36,14 +37,14 @@ const start = ()=>{
     else tips_desktop.style.display = 'block';
 
   
-    if(!getStoreItem("visited")){
+    if(!getStoreItem(prefix+"visited")){
          greeting_close.addEventListener("click",launchGame,{once:true});
          displayGreeting();
     }else{
          launchGame();
     }
 
-    setStoreItem("visited",true);
+    setStoreItem(prefix+"visited",true);
 
     function launchGame(){      
         Game().then(function (game){
