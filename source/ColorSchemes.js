@@ -1,8 +1,8 @@
 
-const black = "#000000",
-      white = "#ffffff";
+const b = "#000000",
+      w = "#ffffff";
 class ColorScheme{
-   constructor(background=black,scorebar=white,arrows=black,clock=black,numbers=black){
+   constructor(background=b,scorebar=w,arrows=b,clock=b,numbers=b){
       this.background = background;
       this.scorebar = scorebar;
       this.arrows = arrows;
@@ -16,13 +16,13 @@ const blue = new ColorScheme("#0260E8"),
       yellow = new ColorScheme("#FFD600"),
       orange = new ColorScheme("#FC9A40"),
       red = new ColorScheme("#FF6E4E"),
-      violet = new ColorScheme("#6E36CA");
-const b = new ColorScheme("#000000","#000000");
-const pool = [b,blue,green,yellow,orange,red,violet];
+      violet = new ColorScheme("#6E36CA"),
+      complete_darkness = new ColorScheme("#000000","#000000");
+
+const pool = [complete_darkness,blue,green,yellow,orange,red,violet];
 
 const ColorSchemes = {
      get: function(index){
-          if(index>=pool.length) throw new Error("IndexError ...");
           return Object.assign({},pool[index]);
      },
      transition: function (index1,index2){
