@@ -5,7 +5,6 @@ import  { isMobile, localStoragePrefix as prefix } from "./Util.js"
 
 
 const mobile = isMobile();
-console.log(getStoreItem(prefix+"visited"));
 
 
 const greeting_close = document.getElementById("greeting_close"),

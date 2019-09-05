@@ -36,7 +36,7 @@ export class Game extends EventTarget{
                  this.transitionColorScheme = ColorSchemes.transition(previous,this.colorSchemeIdx);
               }
          });
-         this.clock = Clock(this,270,270);
+         this.clock = Clock(this);
 
          this.scoreBar = ScoreBar(this);
    
@@ -123,7 +123,6 @@ export class Game extends EventTarget{
          canvas.width = w;
          canvas.height = h;
 
-         console.log(canvas);
          const radius = mobile?w/6:h/10;
 
          this.clock.resize(radius);
