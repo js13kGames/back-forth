@@ -44,12 +44,6 @@ export class Game extends EventTarget{
          this.arrow1 = arrows[0];
          this.arrow2 = arrows[1];
 
-         on("scorebar_add",(score)=>{
-            if(score%10 == 0)
-              this.arrow1.rotationSpeed+=0.1,
-              this.arrow2.rotationSpeed+=0.1;
-         })
-
          const ssheet = SpriteSheet({
                  image: imageAssets["BUG"],
                  frameWidth: 50,
@@ -67,6 +61,7 @@ export class Game extends EventTarget{
          on("bug_overarrow",(arrow)=>{
                this.scoreBar.add(1);
                arrow.randomDirectionChange();
+               arrow.rotationSpeed+=0.04;
          })
 
  
