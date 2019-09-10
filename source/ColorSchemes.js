@@ -14,12 +14,11 @@ class ColorScheme{
 const blue = new ColorScheme("#0260E8"),
       green = new ColorScheme("#41B619"),
       yellow = new ColorScheme("#FFD600"),
-      orange = new ColorScheme("#FC9A40"),
-      red = new ColorScheme("#FF6E4E"),
+      red = new ColorScheme("#F6522E"),
       violet = new ColorScheme("#6E36CA"),
       complete_darkness = new ColorScheme("#000000","#000000");
 
-const pool = [complete_darkness,blue,green,yellow,orange,red,violet];
+const pool = [complete_darkness,blue,green,yellow,violet,red];
 
 const ColorSchemes = {
      get: function(index){
